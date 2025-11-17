@@ -8,6 +8,7 @@ function formatValue(input: string | number | boolean): string | number | boolea
     return !input;
 }
 
+
 function getLength(data: string | any[]): number {
   if (typeof data === "string") {
     return data.length;
@@ -17,6 +18,7 @@ function getLength(data: string | any[]): number {
   }
   return 0;
 }
+
 
 class Person{
     name: string;
@@ -34,4 +36,28 @@ class Person{
 const person1 = new Person('John Doe', 30);
 
 const person2 = new Person('Alice', 25);
+
+
+interface RatedItem {
+  title: string;
+  rating: number;
+}
+
+function filterByRating(items: RatedItem[]): RatedItem[] {
+  return items.filter(item => item.rating >= 4);
+}
+
+type User = {
+  id: number;
+  name: string;
+  email: string;
+  isActive: boolean;
+};
+
+function filterActiveUsers(users: User[]): User[] {
+  return users.filter(user => user.isActive === true);
+}
+
+
+
 
