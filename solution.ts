@@ -10,53 +10,105 @@ function formatValue(input: string | number | boolean): string | number | boolea
 
 
 function getLength(data: string | any[]): number {
-  if (typeof data === "string") {
-    return data.length;
-  }
-  if (Array.isArray(data)) {
-    return data.length;
-  }
-  return 0;
+    if (typeof data === "string") {
+        return data.length;
+    }
+    if (Array.isArray(data)) {
+        return data.length;
+    }
+    return 0;
 }
 
 
-class Person{
+class Person {
     name: string;
     age: number;
 
-    constructor(name: string, age: number){
+    constructor(name: string, age: number) {
         this.name = name;
         this.age = age;
     }
-    getDetails() {
-        return `'Name: ${this.name}, Age: ${this.age}'`;
-    }
+    getDetails(): string {
+    return `'Name: ${this.name}, Age: ${this.age}'`;
+  }
 }
-
-const person1 = new Person('John Doe', 30);
-
-const person2 = new Person('Alice', 25);
 
 
 interface RatedItem {
-  title: string;
-  rating: number;
+    title: string;
+    rating: number;
 }
 
 function filterByRating(items: RatedItem[]): RatedItem[] {
-  return items.filter(item => item.rating >= 4);
+    return items.filter(item => item.rating >= 4);
 }
 
+
 type User = {
-  id: number;
-  name: string;
-  email: string;
-  isActive: boolean;
+    id: number;
+    name: string;
+    email: string;
+    isActive: boolean;
 };
 
 function filterActiveUsers(users: User[]): User[] {
-  return users.filter(user => user.isActive === true);
+    return users.filter(user => user.isActive === true);
 }
+
+
+
+interface Book {
+  title: string;
+  author: string;
+  publishedYear: number;
+  isAvailable: boolean;
+}
+
+function printBookDetails(book: Book): string {
+  return `Title: ${book.title}, Author: ${book.author}, Published: ${book.publishedYear}, Available: ${book.isAvailable ? "Yes" : "No"}`;
+}
+
+
+function getUniqueValues(arr1: (string | number)[], arr2: (string | number)[]): (string | number)[] {
+  const uniqueValues: (string | number)[] = [];
+
+  for (const value of arr1) {
+    if (!uniqueValues.includes(value)) {
+      uniqueValues.push(value);
+    }
+  }
+
+  for (const value of arr2) {
+    if (!uniqueValues.includes(value)) {
+      uniqueValues.push(value);
+    }
+  }
+
+  return uniqueValues;
+}
+
+
+interface Product {
+  name: string;
+  price: number;
+  quantity: number;
+  discount?: number;
+}
+
+function calculateTotalPrice(products: Product[]): number {
+  return products.reduce((total, product) => {
+    const discountRate = product.discount ?? 0;
+    const discountedPrice = product.price - (product.price * discountRate) / 100;
+    return total + discountedPrice * product.quantity;
+  }, 0);
+}
+
+
+
+
+
+
+
 
 
 
