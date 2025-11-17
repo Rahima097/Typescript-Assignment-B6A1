@@ -18,4 +18,20 @@ function getLength(data: string | any[]): number {
   return 0;
 }
 
+class Person{
+    name: string;
+    age: number;
+
+    constructor(name: string, age: number){
+        this.name = name;
+        this.age = age;
+    }
+    getDetails() {
+        return `'Name: ${this.name}, Age: ${this.age}'`;
+    }
+}
+
+const person1 = new Person('John Doe', 30);
+
+const person2 = new Person('Alice', 25);
 
