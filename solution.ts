@@ -40,7 +40,7 @@ interface RatedItem {
 }
 
 function filterByRating(items: RatedItem[]): RatedItem[] {
-    return items.filter(item => item.rating >= 4);
+    return items.filter(item => item.rating >= 4 && item.rating <= 5);
 }
 
 
